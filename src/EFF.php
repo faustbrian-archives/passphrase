@@ -24,9 +24,9 @@ final class EFF
         return new static();
     }
 
-    public function useSeperator(): self
+    public function useSeperator(string $glue): self
     {
-        $this->wordList('eff_short_wordlist_1');
+        $this->glue = $glue;
 
         return $this;
     }
