@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": "^7.4",
-        "illuminate/support": "^8.15"
+        "illuminate/support": "^8.0"
     },
     "require-dev": {
         "konceiver/laravel-stan": "^1.1",

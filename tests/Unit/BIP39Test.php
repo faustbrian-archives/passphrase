@@ -5,8 +5,8 @@ declare(strict_types=1);
 use Konceiver\Passphrase\BIP39;
 
 it('should generate a random passphrase', function ($bip39): void {
-    expect($bip39->generate(12))->toBeString();
-    expect($bip39->generate(24))->toBeString();
+    expect(explode(' ', $bip39->generate(12)))->toHaveCount(12);
+    expect(explode(' ', $bip39->generate(24)))->toHaveCount(24);
 })->with([
     BIP39::new()->useChineseSimplified(),
     BIP39::new()->useChineseTraditional(),
