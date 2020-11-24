@@ -15,3 +15,7 @@ it('should generate a random passphrase with the four dice list', function (): v
 it('should generate a random passphrase with the unique three character list', function (): void {
     expect(EFF::new()->useUniqueThreeCharacterList()->generate(5))->toBeString();
 });
+
+it('should generate a random passphrase with a custom separator', function (): void {
+    expect(EFF::new()->useSeperator('///')->useFiveDiceList()->generate(5))->toContain('///');
+});
