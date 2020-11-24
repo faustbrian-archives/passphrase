@@ -128,6 +128,6 @@ final class BIP39
             $checksum .= $checksumChar >> (7 - $i) & 1;
         }
 
-        return (string) $checksum;
+        return $checksum;
     }
 }
