@@ -66,6 +66,6 @@ final class EFF
 
     private function wordList(string $wordList): void
     {
-        $this->wordList = explode("\n", file_get_contents(realpath(__DIR__.'/'.$wordList.'.txt')));
+        $this->wordList = explode("\n", file_get_contents(realpath(__DIR__.'/eff/'.$wordList.'.txt')));
     }
 }
