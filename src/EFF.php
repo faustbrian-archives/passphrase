@@ -24,9 +24,9 @@ final class EFF
         return new static();
     }
 
-    public function useSeperator(): self
+    public function useSeperator(string $glue): self
     {
-        $this->wordList('eff_short_wordlist_1');
+        $this->glue = $glue;
 
         return $this;
     }
@@ -66,6 +66,6 @@ final class EFF
 
     private function wordList(string $wordList): void
     {
-        $this->wordList = explode("\n", file_get_contents(realpath(__DIR__.'/'.$wordList.'.txt')));
+        $this->wordList = explode("\n", file_get_contents(realpath(__DIR__.'/eff/'.$wordList.'.txt')));
     }
 }
