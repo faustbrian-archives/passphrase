@@ -17,72 +17,54 @@ final class BIP39
 {
     private array $wordList;
 
-    public static function new(): self
+    private function __construct(string $wordList)
     {
-        return new static();
+        $this->wordList = explode("\n", file_get_contents(realpath(__DIR__.'/bip39/'.$wordList.'.txt')));
     }
 
-    public function useChineseSimplified(): self
+    public static function useChineseSimplified(): self
     {
-        $this->wordList('chinese_simplified');
-
-        return $this;
+        return new static('chinese_simplified');
     }
 
-    public function useChineseTraditional(): self
+    public static function useChineseTraditional(): self
     {
-        $this->wordList('chinese_traditional');
-
-        return $this;
+        return new static('chinese_traditional');
     }
 
-    public function useCzech(): self
+    public static function useCzech(): self
     {
-        $this->wordList('czech');
-
-        return $this;
+        return new static('czech');
     }
 
-    public function useEnglish(): self
+    public static function useEnglish(): self
     {
-        $this->wordList('english');
-
-        return $this;
+        return new static('english');
     }
 
-    public function useFrench(): self
+    public static function useFrench(): self
     {
-        $this->wordList('french');
-
-        return $this;
+        return new static('french');
     }
 
-    public function useItalian(): self
+    public static function useItalian(): self
     {
-        $this->wordList('italian');
-
-        return $this;
+        return new static('italian');
     }
 
-    public function useJapanese(): self
+    public static function useJapanese(): self
     {
-        $this->wordList('japanese');
-
-        return $this;
+        return new static('japanese');
     }
 
-    public function useKorean(): self
+    public static function useKorean(): self
     {
-        $this->wordList('korean');
-
-        return $this;
+        return new static('korean');
     }
 
-    public function useSpanish(): self
+    public static function useSpanish(): self
     {
-        $this->wordList('spanish');
-
-        return $this;
+        return new static('spanish');
     }
 
     public function generate(int $wordCount): string
@@ -92,12 +74,7 @@ final class BIP39
             ->implode(' ');
     }
 
-    private function wordList(string $wordList): void
-    {
-        $this->wordList = explode("\n", file_get_contents(realpath(__DIR__.'/bip39/'.$wordList.'.txt')));
-    }
-
-    public function generateEntropy(int $wordCount): array
+    private function generateEntropy(int $wordCount): array
     {
         $overallBits  = $wordCount * 11;
         $checksumBits = (($wordCount - 12) / 3) + 4;

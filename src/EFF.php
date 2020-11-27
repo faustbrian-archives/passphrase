@@ -19,7 +19,7 @@ final class EFF
 
     private string $glue = '-';
 
-    public function __construct(string $wordList)
+    private function __construct(string $wordList)
     {
         $this->wordList = explode("\n", file_get_contents(realpath(__DIR__.'/eff/'.$wordList.'.txt')));
     }
