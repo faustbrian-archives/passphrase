@@ -19,7 +19,7 @@ composer require konceiver/passphrase
 
 ## Usage
 
-See our [extensive test suite](./tests/Unit) for usage example.
+See our [extensive test suite](./tests/Unit) for usage examples.
 
 ## Testing
 
