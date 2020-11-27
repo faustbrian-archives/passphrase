@@ -19,35 +19,29 @@ final class EFF
 
     private string $glue = '-';
 
-    public static function new(): self
+    public function __construct(string $wordList)
     {
-        return new static();
+        $this->wordList = explode("\n", file_get_contents(realpath(__DIR__.'/eff/'.$wordList.'.txt')));
+    }
+
+    public static function useFourDiceList(): self
+    {
+        return new static('eff_short_wordlist_1');
+    }
+
+    public static function useFiveDiceList(): self
+    {
+        return new static('eff_large_wordlist');
+    }
+
+    public static function useUniqueThreeCharacterList(): self
+    {
+        return new static('eff_short_wordlist_2_0');
     }
 
     public function useSeperator(string $glue): self
     {
         $this->glue = $glue;
-
-        return $this;
-    }
-
-    public function useFourDiceList(): self
-    {
-        $this->wordList('eff_short_wordlist_1');
-
-        return $this;
-    }
-
-    public function useFiveDiceList(): self
-    {
-        $this->wordList('eff_large_wordlist');
-
-        return $this;
-    }
-
-    public function useUniqueThreeCharacterList(): self
-    {
-        $this->wordList('eff_short_wordlist_2_0');
 
         return $this;
     }
@@ -62,10 +56,5 @@ final class EFF
         }
 
         return implode($this->glue, $passphrase);
-    }
-
-    private function wordList(string $wordList): void
-    {
-        $this->wordList = explode("\n", file_get_contents(realpath(__DIR__.'/eff/'.$wordList.'.txt')));
     }
 }
